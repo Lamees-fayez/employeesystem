@@ -26,10 +26,11 @@ def emp_delete(request,id):
     return redirect('home:home')
 
 def emp_create(request):
-    form =EmployeeForm()
+    
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home:home')
+    form = EmployeeForm()
     return render(request, 'create.html',{'form':form})
